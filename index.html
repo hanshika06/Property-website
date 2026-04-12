@@ -119,18 +119,25 @@
         .hero {
             position: relative;
             z-index: 1;
-            padding: 140px 20px 80px;
+            padding: 100px 20px;
             text-align: center;
-            min-height: 90vh;
+            min-height: 100vh;           /* Takes full viewport height */
+            width: 100vw;                /* Full viewport width */
+            margin-left: calc(-50vw + 50%);  /* Centers full width */
+            margin-right: calc(-50vw + 50%);
             display: flex;
             align-items: center;
             justify-content: center;
+            background: linear-gradient(135deg, #fff9f5, #ffffff);
+                    box-sizing: border-box;
         }
 
+/* Content container inside hero */
         .hero-content {
             max-width: 900px;
+            width: 100%;
+            margin: 0 auto;
         }
-
         h1 {
             font-size: 42px;
             font-weight: 800;
