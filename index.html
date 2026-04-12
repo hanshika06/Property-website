@@ -21,7 +21,7 @@
             position: relative;
         }
 
-        /* BUBBLE BACKGROUND - Visible on ALL sections */
+        /* BUBBLE BACKGROUND - MORE BUBBLES & VISIBLE */
         .bubbles {
             position: fixed;
             top: 0;
@@ -35,23 +35,55 @@
 
         .bubble {
             position: absolute;
-            background: radial-gradient(circle at 30% 30%, rgba(202, 83, 16, 0.15), rgba(255, 140, 0, 0.06));
+            background: radial-gradient(circle at 30% 30%, rgba(202, 83, 16, 0.25), rgba(255, 140, 0, 0.12));
             border-radius: 50%;
             animation: floatBubble 12s ease-in-out infinite;
+            box-shadow: 0 0 10px rgba(202, 83, 16, 0.1);
         }
 
         @keyframes floatBubble {
             0% {
                 transform: translateY(0) translateX(0);
+                opacity: 0.4;
+            }
+            50% {
+                transform: translateY(-50px) translateX(25px);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(0) translateX(0);
+                opacity: 0.4;
+            }
+        }
+
+        /* Different animation for variety */
+        @keyframes floatBubbleSlow {
+            0% {
+                transform: translateY(0) translateX(0);
                 opacity: 0.3;
             }
             50% {
-                transform: translateY(-40px) translateX(20px);
-                opacity: 0.6;
+                transform: translateY(-30px) translateX(-20px);
+                opacity: 0.7;
             }
             100% {
                 transform: translateY(0) translateX(0);
                 opacity: 0.3;
+            }
+        }
+
+        @keyframes floatBubbleFast {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 0.35;
+            }
+            50% {
+                transform: translateY(-60px) translateX(15px);
+                opacity: 0.75;
+            }
+            100% {
+                transform: translateY(0) translateX(0);
+                opacity: 0.35;
             }
         }
 
@@ -80,7 +112,6 @@
             text-align: center;
         }
 
-        /* LETTER SPACING for BALAJI ASSOCIATES */
         .logo {
             font-size: 22px;
             font-weight: 800;
@@ -88,7 +119,7 @@
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
         }
 
         .logo span {
@@ -115,7 +146,7 @@
             cursor: pointer;
         }
 
-        /* Hero Section - FULL PAGE with bubbles visible */
+        /* Hero Section - FULL PAGE with transparent background to show bubbles */
         .hero {
             position: relative;
             z-index: 1;
@@ -126,7 +157,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(255, 248, 240, 0.92);
+            background: rgba(255, 255, 255, 0.85);
             margin: 0;
         }
 
@@ -134,6 +165,8 @@
             max-width: 900px;
             width: 100%;
             margin: 0 auto;
+            position: relative;
+            z-index: 2;
         }
 
         h1 {
@@ -152,7 +185,7 @@
         }
 
         .rating {
-            background: rgba(255, 215, 0, 0.15);
+            background: rgba(255, 215, 0, 0.2);
             display: inline-flex;
             align-items: center;
             gap: 6px;
@@ -198,7 +231,7 @@
             box-shadow: none;
         }
 
-        /* Stats Section - Full Width */
+        /* Stats Section */
         .stats-section {
             position: relative;
             z-index: 1;
@@ -230,16 +263,15 @@
             font-weight: 500;
         }
 
-        /* Sections */
+        /* Sections with transparent background to show bubbles */
         .section {
             position: relative;
             z-index: 1;
             padding: 50px 16px;
             max-width: 1200px;
-            margin: 0 auto;
-            background: rgba(255, 255, 255, 0.9);
+            margin: 0 auto 20px;
+            background: rgba(255, 255, 255, 0.88);
             border-radius: 30px;
-            margin-bottom: 20px;
         }
 
         .section-title {
@@ -383,7 +415,7 @@
         .testimonials-section {
             position: relative;
             z-index: 1;
-            background: rgba(248, 249, 252, 0.9);
+            background: rgba(248, 249, 252, 0.88);
             padding: 50px 16px;
             border-radius: 30px;
             margin-bottom: 20px;
@@ -597,7 +629,7 @@
 </head>
 <body>
 
-<!-- BUBBLE BACKGROUND -->
+<!-- BUBBLE BACKGROUND - MORE BUBBLES -->
 <div class="bubbles" id="bubbles"></div>
 
 <!-- Navigation -->
@@ -619,7 +651,7 @@
     </div>
 </nav>
 
-<!-- Hero Section - FULL PAGE -->
+<!-- Hero Section -->
 <section id="home" class="hero">
     <div class="hero-content">
         <div class="rating">
@@ -738,7 +770,7 @@
 <div class="toast" id="toast">Message sent successfully!</div>
 
 <script>
-    // Property Data - ALL WORKING IMAGES
+    // Property Data
     const properties = [
         { 
             id: 1, 
@@ -806,21 +838,36 @@
         grid.innerHTML = html;
     }
 
-    // Create bubbles
+    // Create MORE BUBBLES with different animations
     function createBubbles() {
         const container = document.getElementById('bubbles');
-        const bubbleCount = 25;
+        const bubbleCount = 60; // More bubbles!
+        const animations = ['floatBubble', 'floatBubbleSlow', 'floatBubbleFast'];
         
         for (let i = 0; i < bubbleCount; i++) {
             const bubble = document.createElement('div');
             bubble.classList.add('bubble');
-            const size = Math.random() * 80 + 20;
+            
+            // Random sizes for variety
+            const size = Math.random() * 100 + 15;
             bubble.style.width = size + 'px';
             bubble.style.height = size + 'px';
+            
+            // Random positions
             bubble.style.left = Math.random() * 100 + '%';
             bubble.style.top = Math.random() * 100 + '%';
-            bubble.style.animationDuration = (Math.random() * 10 + 8) + 's';
+            
+            // Random animation duration
+            const duration = Math.random() * 15 + 8;
+            
+            // Random animation type
+            const randomAnim = animations[Math.floor(Math.random() * animations.length)];
+            bubble.style.animation = `${randomAnim} ${duration}s ease-in-out infinite`;
             bubble.style.animationDelay = (Math.random() * 5) + 's';
+            
+            // Random opacity
+            bubble.style.opacity = Math.random() * 0.5 + 0.2;
+            
             container.appendChild(bubble);
         }
     }
