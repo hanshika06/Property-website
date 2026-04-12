@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>Balaji Associates | Farm Houses & Bungalows - Sainik Farms, Delhi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #f8f9fc 0%, #f0f2f8 100%);
+            color: #1a1a1a;
+            line-height: 1.5;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* BUBBLE BACKGROUND */
+        .bubbles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .bubble {
+            position: absolute;
+            background: radial-gradient(circle at 30% 30%, rgba(202, 83, 16, 0.12), rgba(255, 140, 0, 0.05));
+            border-radius: 50%;
+            animation: floatBubble 12s ease-in-out infinite;
+        }
+
+        @keyframes floatBubble {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 0.3;
+            }
+            50% {
+                transform: translateY(-40px) translateX(20px);
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(0) translateX(0);
+                opacity: 0.3;
+            }
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            z-index: 1000;
+            padding: 12px 16px;
+        }
+
+        .nav-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo-section {
+            text-align: center;
+        }
+
+        /* LETTER SPACING for BALAJI ASSOCIATES */
+        .logo {
+            font-size: 22px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ca5310, #ff8c00);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: 3px;
+        }
+
+        .logo span {
+            font-size: 11px;
+            display: block;
+            color: #666;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 5px 0;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            z-index: 1;
+            padding: 140px 20px 80px;
+            text-align: center;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        h1 {
+            font-size: 42px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+        }
+
+        h1 span {
+            background: linear-gradient(135deg, #ca5310, #ff8c00);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .rating {
+            background: rgba(255, 215, 0, 0.12);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 25px;
+        }
+
+        .rating i {
+            color: #fbbf24;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 35px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #ca5310, #ff8c00);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            border: none;
+            cursor: pointer;
+            margin: 5px;
+            box-shadow: 0 4px 15px rgba(202,83,16,0.25);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #ca5310;
+            color: #ca5310;
+            box-shadow: none;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            position: relative;
+            z-index: 1;
+            background: linear-gradient(135deg, #ca5310, #ff8c00);
+            padding: 45px 20px;
+            color: white;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 38px;
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            opacity: 0.95;
+            font-weight: 500;
+        }
+
+        /* Sections */
+        .section {
+            position: relative;
+            z-index: 1;
+            padding: 50px 16px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #1a1a1a;
+            scroll-margin-top: 100px;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #ca5310, #ff8c00);
+            margin: 12px auto 0;
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+
+        /* Property Cards */
+        .properties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .property-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            position: relative;
+            transition: transform 0.2s;
+        }
+
+        .property-card:active {
+            transform: scale(0.98);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: linear-gradient(135deg, #ca5310, #ff8c00);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            z-index: 5;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .property-image {
+            width: 100%;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #e2e8f0;
+        }
+
+        .property-info {
+            padding: 16px;
+            text-align: center;
+        }
+
+        .property-title {
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .property-location {
+            font-size: 13px;
+            color: #666;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            margin-bottom: 12px;
+        }
+
+        .property-location i {
+            color: #ca5310;
+        }
+
+        /* Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 22px 12px;
+            border-radius: 18px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+
+        .service-card:active {
+            transform: scale(0.97);
+        }
+
+        .service-card i {
+            font-size: 35px;
+            background: linear-gradient(135deg, #ca5310, #ff8c00);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+
+        .service-card h3 {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .service-card p {
+            font-size: 11px;
+            color: #666;
+        }
+
+        /* Testimonials */
+        .testimonials-section {
+            position: relative;
+            z-index: 1;
+            background: rgba(248, 249, 252, 0.9);
+            padding: 50px 16px;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 18px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 22px;
+            border-radius: 18px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .testimonial-stars {
+            color: #fbbf24;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .testimonial-text {
+            font-size: 13px;
+            line-height: 1.5;
+            margin-bottom: 10px;
+            color: #444;
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            font-size: 12px;
+            color: #ca5310;
+        }
+
+        /* Contact */
+        .contact-section {
+            background: white;
+            border-radius: 24px;
+            padding: 28px;
+            margin-top: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 18px;
+            margin-top: 20px;
+        }
+
+        .contact-card {
+            text-align: center;
+            padding: 18px;
+            background: #f8f9fc;
+            border-radius: 16px;
+        }
+
+        .contact-card i {
+            font-size: 30px;
+            color: #ca5310;
+            margin-bottom: 8px;
+        }
+
+        .contact-card h3 {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .contact-card p, .contact-card a {
+            font-size: 12px;
+            text-decoration: none;
+            color: #ca5310;
+        }
+
+        /* Form */
+        .form-section {
+            background: white;
+            border-radius: 24px;
+            padding: 28px;
+            margin-top: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            font-size: 14px;
+            font-family: 'Poppins', sans-serif;
+            background: #f8f9fc;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #ca5310;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 18px;
+        }
+
+        footer {
+            position: relative;
+            z-index: 1;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 11px;
+            margin-top: 30px;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #ca5310, #ff8c00);
+            color: white;
+            padding: 14px;
+            border-radius: 14px;
+            text-align: center;
+            font-size: 13px;
+            font-weight: 500;
+            z-index: 1000;
+            display: none;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .toast.show {
+            display: block;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Desktop */
+        @media (min-width: 768px) {
+            .nav-container {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .logo-section {
+                text-align: left;
+            }
+            .properties-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+            }
+            .services-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 20px;
+            }
+            .testimonials-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+            }
+            .contact-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 20px;
+            }
+            .form-row {
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+            h1 {
+                font-size: 56px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .properties-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 30px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<!-- BUBBLE BACKGROUND -->
+<div class="bubbles" id="bubbles"></div>
+
+<!-- Navigation -->
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="logo-section">
+            <div class="logo">
+                🏡 BALAJI ASSOCIATES
+                <span>Farm House & Bungalow Experts</span>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a onclick="scrollToSection('home')">Home</a>
+            <a onclick="scrollToSection('services')">Services</a>
+            <a onclick="scrollToSection('properties')">Properties</a>
+            <a onclick="scrollToSection('enquiry')">Enquire</a>
+            <a onclick="scrollToSection('contact')">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section id="home" class="hero">
+    <div class="hero-content">
+        <div class="rating">
+            <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star-half-alt"></i>
+            4.5 ★ (4 Ratings) | Sainik Farms, Delhi
+        </div>
+        <h1>DEALS IN <span>FARM HOUSE</span><br>& BUNGALOW</h1>
+        <p>Sale • Purchase • Rent — Your Trusted Partner for Premium Properties in South Delhi</p>
+        <div>
+            <a onclick="scrollToSection('properties')" class="btn">Explore Properties →</a>
+            <a onclick="scrollToSection('enquiry')" class="btn btn-outline">Enquire Now</a>
+        </div>
+    </div>
+</section>
+
+<!-- Stats Section -->
+<div class="stats-section">
+    <div class="stats-grid">
+        <div><div class="stat-number">100+</div><div class="stat-label">Happy Clients</div></div>
+        <div><div class="stat-number">45+</div><div class="stat-label">Properties Sold</div></div>
+        <div><div class="stat-number">12+</div><div class="stat-label">Luxury Projects</div></div>
+        <div><div class="stat-number">8 Years</div><div class="stat-label">Trust & Excellence</div></div>
+    </div>
+</div>
+
+<!-- Services Section -->
+<section id="services" class="section">
+    <h2 class="section-title">Our Expertise</h2>
+    <div class="services-grid">
+        <div class="service-card"><i class="fas fa-home"></i><h3>Farm Houses</h3><p>Sainik Farms, Chattarpur</p></div>
+        <div class="service-card"><i class="fas fa-building"></i><h3>Kothi / Bungalow</h3><p>Premium independent floors</p></div>
+        <div class="service-card"><i class="fas fa-map-marker-alt"></i><h3>Plots</h3><p>Residential & Commercial</p></div>
+        <div class="service-card"><i class="fas fa-handshake"></i><h3>Sale • Purchase • Rent</h3><p>Transparent dealings</p></div>
+    </div>
+</section>
+
+<!-- Properties Section -->
+<section id="properties" class="section">
+    <h2 class="section-title">Featured Properties</h2>
+    <p class="section-subtitle">Premium properties in prime locations of South Delhi</p>
+    <div class="properties-grid" id="propertiesGrid"></div>
+</section>
+
+<!-- Testimonials -->
+<div class="testimonials-section">
+    <h2 class="section-title">What Our Clients Say</h2>
+    <div class="testimonials-grid">
+        <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">"Excellent service! Very professional and transparent. Helped us find our dream farm house."</p><p class="testimonial-author">- Rajesh Khanna</p></div>
+        <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">"Great experience. Got the best deal for our property. Highly recommended!"</p><p class="testimonial-author">- Priya Mehta</p></div>
+        <div class="testimonial-card"><div class="testimonial-stars">★★★★☆</div><p class="testimonial-text">"Professional team, quick response, genuine deals. Will work with them again."</p><p class="testimonial-author">- Vikram Singh</p></div>
+    </div>
+</div>
+
+<!-- Enquiry Form -->
+<section id="enquiry" class="section">
+    <div class="form-section">
+        <h2 style="text-align: center; margin-bottom: 5px; font-size: 24px;">Send Enquiry</h2>
+        <p style="text-align: center; margin-bottom: 20px; color: #666; font-size: 13px;">Get direct response from Balaji Associates team</p>
+        
+        <form id="enquiryForm">
+            <div class="form-row">
+                <div class="form-group"><label>Full Name *</label><input type="text" id="name" required placeholder="Enter your full name"></div>
+                <div class="form-group"><label>Mobile Number *</label><input type="tel" id="mobile" required placeholder="10-digit mobile number"></div>
+            </div>
+            <div class="form-row">
+                <div class="form-group"><label>Email ID</label><input type="email" id="email" placeholder="your@email.com"></div>
+                <div class="form-group"><label>I'm Looking For *</label>
+                    <select id="lookingFor" required>
+                        <option value="">Select Property Type</option>
+                        <option>Farm House - Purchase</option>
+                        <option>Farm House - Rent</option>
+                        <option>Bungalow/Kothi - Purchase</option>
+                        <option>Bungalow/Kothi - Rent</option>
+                        <option>Plot - Purchase</option>
+                        <option>Commercial Property</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group"><label>Budget Range</label>
+                <select id="budget">
+                    <option value="">Select Budget</option>
+                    <option>Below ₹1 Cr</option>
+                    <option>₹1 Cr - ₹2 Cr</option>
+                    <option>₹2 Cr - ₹3 Cr</option>
+                    <option>₹3 Cr - ₹5 Cr</option>
+                    <option>Above ₹5 Cr</option>
+                </select>
+            </div>
+            <button type="submit" class="btn" style="width: 100%;">Send Enquiry →</button>
+            <div id="successMessage" style="background: #dcfce7; border-left: 4px solid #22c55e; padding: 12px; border-radius: 12px; margin-top: 16px; text-align: center; font-size: 13px; display: none;">
+                ✓ Enquiry sent! Owner will contact you shortly.
+            </div>
+        </form>
+    </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="section">
+    <div class="contact-section">
+        <h2 style="text-align: center; margin-bottom: 5px; font-size: 24px;">Contact Us</h2>
+        <p style="text-align: center; margin-bottom: 15px; font-size: 13px; color: #666;">Reach out to us anytime for property inquiries</p>
+        <div class="contact-grid">
+            <div class="contact-card"><i class="fas fa-map-marker-alt"></i><h3>Address</h3><p>W-6 C No-1, Western Avenue, Tigri Line, Sainik Farm, New Delhi - 110062</p></div>
+            <div class="contact-card"><i class="fas fa-phone-alt"></i><h3>Call Us</h3><p>Brij Kishor: <a href="tel:9810000355">9810000355</a></p><p>Alternate: <a href="tel:9810345126">9810345126</a></p></div>
+            <div class="contact-card"><i class="fab fa-whatsapp"></i><h3>WhatsApp</h3><a href="https://wa.me/9810794335">Chat with Rakesh</a><br><a href="https://wa.me/8860351511">Chat with Harsh</a></div>
+            <div class="contact-card"><i class="far fa-clock"></i><h3>Business Hours</h3><p>Mon-Sat: 10 AM - 7 PM</p></div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>© 2025 Balaji Associates — Dealing in Farm House, Kothi & Plots | Sale • Purchase • Rent</p>
+    <p style="margin-top: 6px; opacity: 0.7;">Sainik Farms, New Delhi - 110062</p>
+</footer>
+
+<div class="toast" id="toast">Message sent successfully!</div>
+
+<script>
+    // Property Data - ALL WORKING IMAGES
+    const properties = [
+        { 
+            id: 1, 
+            name: "Luxury Farm House", 
+            location: "Sainik Farms, Delhi", 
+            image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=600&h=400&fit=crop",
+            featured: true 
+        },
+        { 
+            id: 2, 
+            name: "Independent Bungalow", 
+            location: "Western Avenue, Tigri Line", 
+            image: "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=600&h=400&fit=crop",
+            featured: false 
+        },
+        { 
+            id: 3, 
+            name: "Premium Farm Estate", 
+            location: "Chattarpur, Delhi", 
+            image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=400&fit=crop",
+            featured: true 
+        },
+        { 
+            id: 4, 
+            name: "Modern Bungalow", 
+            location: "Bijwasan, Delhi", 
+            image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&h=400&fit=crop",
+            featured: false 
+        },
+        { 
+            id: 5, 
+            name: "Commercial Plot", 
+            location: "Tigri Border, Delhi", 
+            image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&h=400&fit=crop",
+            featured: false 
+        },
+        { 
+            id: 6, 
+            name: "Luxury Villa", 
+            location: "Sainik Farms, Delhi", 
+            image: "https://images.unsplash.com/photo-1613977257363-707ba9344cf8?w=600&h=400&fit=crop",
+            featured: true 
+        }
+    ];
+
+    function renderProperties() {
+        const grid = document.getElementById('propertiesGrid');
+        if (!grid) return;
+        
+        let html = '';
+        for (let i = 0; i < properties.length; i++) {
+            const p = properties[i];
+            html += `
+                <div class="property-card" style="position: relative;">
+                    ${p.featured ? '<div class="featured-badge"><i class="fas fa-star"></i> FEATURED</div>' : ''}
+                    <div class="property-image" style="background-image: url('${p.image}'); background-size: cover; background-position: center;"></div>
+                    <div class="property-info">
+                        <h3 class="property-title">${p.name}</h3>
+                        <div class="property-location"><i class="fas fa-map-marker-alt"></i> ${p.location}</div>
+                        <button class="btn" onclick="scrollToEnquiry('${p.name}')" style="width: 100%; padding: 10px; font-size: 13px;">📧 Enquire Now</button>
+                    </div>
+                </div>
+            `;
+        }
+        grid.innerHTML = html;
+    }
+
+    // Create bubbles
+    function createBubbles() {
+        const container = document.getElementById('bubbles');
+        const bubbleCount = 20;
+        
+        for (let i = 0; i < bubbleCount; i++) {
+            const bubble = document.createElement('div');
+            bubble.classList.add('bubble');
+            const size = Math.random() * 80 + 20;
+            bubble.style.width = size + 'px';
+            bubble.style.height = size + 'px';
+            bubble.style.left = Math.random() * 100 + '%';
+            bubble.style.top = Math.random() * 100 + '%';
+            bubble.style.animationDuration = (Math.random() * 10 + 8) + 's';
+            bubble.style.animationDelay = (Math.random() * 5) + 's';
+            container.appendChild(bubble);
+        }
+    }
+
+    // FIXED: Scroll to section heading (not just the section)
+    function scrollToSection(sectionId) {
+        const element = document.getElementById(sectionId);
+        if (element) {
+            const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+            const offsetPosition = elementPosition - 70;
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+        }
+    }
+
+    function scrollToEnquiry(propertyName) {
+        const select = document.getElementById('lookingFor');
+        if (propertyName.includes('Farm')) select.value = 'Farm House - Purchase';
+        else if (propertyName.includes('Bungalow')) select.value = 'Bungalow/Kothi - Purchase';
+        else if (propertyName.includes('Plot')) select.value = 'Plot - Purchase';
+        else select.value = 'Farm House - Purchase';
+        
+        const element = document.getElementById('enquiry');
+        if (element) {
+            const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+            const offsetPosition = elementPosition - 70;
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+        }
+    }
+
+    function showToast(message) {
+        const toast = document.getElementById('toast');
+        toast.innerText = message;
+        toast.classList.add('show');
+        setTimeout(function() { 
+            toast.classList.remove('show'); 
+        }, 3000);
+    }
+
+    const form = document.getElementById('enquiryForm');
+    const successMsg = document.getElementById('successMessage');
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const name = document.getElementById('name').value;
+        const mobile = document.getElementById('mobile').value;
+        const lookingFor = document.getElementById('lookingFor').value;
+        
+        if (!name || !mobile || !lookingFor) {
+            alert('Please fill all required fields (*)');
+            return;
+        }
+        
+        const email = document.getElementById('email').value;
+        const budget = document.getElementById('budget').value;
+        
+        const emailSubject = 'Property Enquiry from ' + name;
+        const emailBody = 'NEW PROPERTY ENQUIRY\n\nName: ' + name + '\nMobile: ' + mobile + '\nEmail: ' + (email || 'Not provided') + '\nLooking For: ' + lookingFor + '\nBudget: ' + (budget || 'Not specified') + '\n\nPlease contact the customer at the earliest on ' + mobile + '.';
+        
+        window.location.href = 'mailto:9810000355@msg.irctc.com,9810345126@msg.irctc.com?subject=' + encodeURIComponent(emailSubject) + '&body=' + encodeURIComponent(emailBody);
+        
+        successMsg.style.display = 'block';
+        showToast('Enquiry sent! Owner will contact you soon.');
+        form.reset();
+        
+        setTimeout(function() {
+            successMsg.style.display = 'none';
+        }, 5000);
+    });
+
+    renderProperties();
+    createBubbles();
+</script>
+</body>
+</html>
