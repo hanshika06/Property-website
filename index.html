@@ -21,7 +21,7 @@
             position: relative;
         }
 
-        /* BUBBLE BACKGROUND - MORE BUBBLES & VISIBLE */
+        /* BUBBLE BACKGROUND - DARKER & MORE VISIBLE */
         .bubbles {
             position: fixed;
             top: 0;
@@ -35,55 +35,54 @@
 
         .bubble {
             position: absolute;
-            background: radial-gradient(circle at 30% 30%, rgba(202, 83, 16, 0.25), rgba(255, 140, 0, 0.12));
+            background: radial-gradient(circle at 30% 30%, rgba(202, 83, 16, 0.5), rgba(255, 140, 0, 0.3));
             border-radius: 50%;
             animation: floatBubble 12s ease-in-out infinite;
-            box-shadow: 0 0 10px rgba(202, 83, 16, 0.1);
+            box-shadow: 0 0 15px rgba(202, 83, 16, 0.3);
         }
 
         @keyframes floatBubble {
             0% {
                 transform: translateY(0) translateX(0);
-                opacity: 0.4;
+                opacity: 0.5;
             }
             50% {
                 transform: translateY(-50px) translateX(25px);
-                opacity: 0.8;
+                opacity: 0.9;
             }
             100% {
                 transform: translateY(0) translateX(0);
-                opacity: 0.4;
+                opacity: 0.5;
             }
         }
 
-        /* Different animation for variety */
         @keyframes floatBubbleSlow {
             0% {
                 transform: translateY(0) translateX(0);
-                opacity: 0.3;
+                opacity: 0.45;
             }
             50% {
                 transform: translateY(-30px) translateX(-20px);
-                opacity: 0.7;
+                opacity: 0.85;
             }
             100% {
                 transform: translateY(0) translateX(0);
-                opacity: 0.3;
+                opacity: 0.45;
             }
         }
 
         @keyframes floatBubbleFast {
             0% {
                 transform: translateY(0) translateX(0);
-                opacity: 0.35;
+                opacity: 0.5;
             }
             50% {
                 transform: translateY(-60px) translateX(15px);
-                opacity: 0.75;
+                opacity: 0.9;
             }
             100% {
                 transform: translateY(0) translateX(0);
-                opacity: 0.35;
+                opacity: 0.5;
             }
         }
 
@@ -119,7 +118,7 @@
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
-            letter-spacing: 3px;
+            letter-spacing: 1px;
         }
 
         .logo span {
@@ -146,7 +145,7 @@
             cursor: pointer;
         }
 
-        /* Hero Section - FULL PAGE with transparent background to show bubbles */
+        /* Hero Section - More transparent to show darker bubbles */
         .hero {
             position: relative;
             z-index: 1;
@@ -157,7 +156,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.75);
             margin: 0;
         }
 
@@ -185,7 +184,7 @@
         }
 
         .rating {
-            background: rgba(255, 215, 0, 0.2);
+            background: rgba(255, 215, 0, 0.25);
             display: inline-flex;
             align-items: center;
             gap: 6px;
@@ -270,7 +269,7 @@
             padding: 50px 16px;
             max-width: 1200px;
             margin: 0 auto 20px;
-            background: rgba(255, 255, 255, 0.88);
+            background: rgba(255, 255, 255, 0.82);
             border-radius: 30px;
         }
 
@@ -415,7 +414,7 @@
         .testimonials-section {
             position: relative;
             z-index: 1;
-            background: rgba(248, 249, 252, 0.88);
+            background: rgba(248, 249, 252, 0.82);
             padding: 50px 16px;
             border-radius: 30px;
             margin-bottom: 20px;
@@ -629,7 +628,7 @@
 </head>
 <body>
 
-<!-- BUBBLE BACKGROUND - MORE BUBBLES -->
+<!-- BUBBLE BACKGROUND -->
 <div class="bubbles" id="bubbles"></div>
 
 <!-- Navigation -->
@@ -838,10 +837,10 @@
         grid.innerHTML = html;
     }
 
-    // Create MORE BUBBLES with different animations
+    // Create DARKER, MORE VISIBLE BUBBLES
     function createBubbles() {
         const container = document.getElementById('bubbles');
-        const bubbleCount = 60; // More bubbles!
+        const bubbleCount = 70; // Even more bubbles!
         const animations = ['floatBubble', 'floatBubbleSlow', 'floatBubbleFast'];
         
         for (let i = 0; i < bubbleCount; i++) {
@@ -849,7 +848,7 @@
             bubble.classList.add('bubble');
             
             // Random sizes for variety
-            const size = Math.random() * 100 + 15;
+            const size = Math.random() * 120 + 20;
             bubble.style.width = size + 'px';
             bubble.style.height = size + 'px';
             
@@ -858,15 +857,18 @@
             bubble.style.top = Math.random() * 100 + '%';
             
             // Random animation duration
-            const duration = Math.random() * 15 + 8;
+            const duration = Math.random() * 18 + 6;
             
             // Random animation type
             const randomAnim = animations[Math.floor(Math.random() * animations.length)];
             bubble.style.animation = `${randomAnim} ${duration}s ease-in-out infinite`;
-            bubble.style.animationDelay = (Math.random() * 5) + 's';
+            bubble.style.animationDelay = (Math.random() * 6) + 's';
             
-            // Random opacity
-            bubble.style.opacity = Math.random() * 0.5 + 0.2;
+            // Higher opacity for better visibility
+            bubble.style.opacity = Math.random() * 0.6 + 0.3;
+            
+            // Stronger glow effect
+            bubble.style.boxShadow = `0 0 ${Math.random() * 20 + 10}px rgba(202, 83, 16, 0.4)`;
             
             container.appendChild(bubble);
         }
