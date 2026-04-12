@@ -21,7 +21,7 @@
             position: relative;
         }
 
-        /* BUBBLE BACKGROUND */
+        /* BUBBLE BACKGROUND - Visible on ALL sections */
         .bubbles {
             position: fixed;
             top: 0;
@@ -35,7 +35,7 @@
 
         .bubble {
             position: absolute;
-            background: radial-gradient(circle at 30% 30%, rgba(202, 83, 16, 0.12), rgba(255, 140, 0, 0.05));
+            background: radial-gradient(circle at 30% 30%, rgba(202, 83, 16, 0.15), rgba(255, 140, 0, 0.06));
             border-radius: 50%;
             animation: floatBubble 12s ease-in-out infinite;
         }
@@ -115,39 +115,27 @@
             cursor: pointer;
         }
 
-        /* Hero Section */
+        /* Hero Section - FULL PAGE with bubbles visible */
         .hero {
             position: relative;
             z-index: 1;
-            padding: 100px 20px;
+            padding: 140px 20px 80px;
             text-align: center;
-            min-height: 100vh;           /* Takes full viewport height */
-            width: 100vw;                /* Full viewport width */
-            margin-left: calc(-50vw + 50%);  /* Centers full width */
-            margin-right: calc(-50vw + 50%);
+            min-height: 100vh;
+            width: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, #fff9f5, #ffffff);
-                    box-sizing: border-box;
+            background: rgba(255, 248, 240, 0.92);
+            margin: 0;
         }
 
-        .bubbles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            overflow: hidden;
-            pointer-events: none;
-        }
-        /* Content container inside hero */
         .hero-content {
             max-width: 900px;
             width: 100%;
             margin: 0 auto;
         }
+
         h1 {
             font-size: 42px;
             font-weight: 800;
@@ -164,7 +152,7 @@
         }
 
         .rating {
-            background: rgba(255, 215, 0, 0.12);
+            background: rgba(255, 215, 0, 0.15);
             display: inline-flex;
             align-items: center;
             gap: 6px;
@@ -210,13 +198,15 @@
             box-shadow: none;
         }
 
-        /* Stats Section */
+        /* Stats Section - Full Width */
         .stats-section {
             position: relative;
             z-index: 1;
             background: linear-gradient(135deg, #ca5310, #ff8c00);
             padding: 45px 20px;
             color: white;
+            width: 100%;
+            margin: 0;
         }
 
         .stats-grid {
@@ -247,6 +237,9 @@
             padding: 50px 16px;
             max-width: 1200px;
             margin: 0 auto;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 30px;
+            margin-bottom: 20px;
         }
 
         .section-title {
@@ -392,6 +385,8 @@
             z-index: 1;
             background: rgba(248, 249, 252, 0.9);
             padding: 50px 16px;
+            border-radius: 30px;
+            margin-bottom: 20px;
         }
 
         .testimonials-grid {
@@ -624,7 +619,7 @@
     </div>
 </nav>
 
-<!-- Hero Section -->
+<!-- Hero Section - FULL PAGE -->
 <section id="home" class="hero">
     <div class="hero-content">
         <div class="rating">
@@ -749,42 +744,42 @@
             id: 1, 
             name: "Luxury Farm House", 
             location: "Sainik Farms, Delhi", 
-            image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=600&h=400&fit=crop",
+            image: "https://images.pexels.com/photos/280229/pexels-photo-280229.jpeg?w=600&h=400&fit=crop",
             featured: true 
         },
         { 
             id: 2, 
             name: "Independent Bungalow", 
             location: "Western Avenue, Tigri Line", 
-            image: "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=600&h=400&fit=crop",
+            image: "https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?w=600&h=400&fit=crop",
             featured: false 
         },
         { 
             id: 3, 
             name: "Premium Farm Estate", 
             location: "Chattarpur, Delhi", 
-            image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=400&fit=crop",
+            image: "https://images.pexels.com/photos/2587054/pexels-photo-2587054.jpeg?w=600&h=400&fit=crop",
             featured: true 
         },
         { 
             id: 4, 
             name: "Modern Bungalow", 
             location: "Bijwasan, Delhi", 
-            image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&h=400&fit=crop",
+            image: "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?w=600&h=400&fit=crop",
             featured: false 
         },
         { 
             id: 5, 
             name: "Commercial Plot", 
             location: "Tigri Border, Delhi", 
-            image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&h=400&fit=crop",
+            image: "https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg?w=600&h=400&fit=crop",
             featured: false 
         },
         { 
             id: 6, 
             name: "Luxury Villa", 
             location: "Sainik Farms, Delhi", 
-            image: "https://images.pexels.com/photos/2587054/pexels-photo-2587054.jpeg?w=600&h=400&fit=crop",
+            image: "https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?w=600&h=400&fit=crop",
             featured: true 
         }
     ];
@@ -814,7 +809,7 @@
     // Create bubbles
     function createBubbles() {
         const container = document.getElementById('bubbles');
-        const bubbleCount = 20;
+        const bubbleCount = 25;
         
         for (let i = 0; i < bubbleCount; i++) {
             const bubble = document.createElement('div');
@@ -830,7 +825,7 @@
         }
     }
 
-    // FIXED: Scroll to section heading (not just the section)
+    // Scroll to section with offset
     function scrollToSection(sectionId) {
         const element = document.getElementById(sectionId);
         if (element) {
