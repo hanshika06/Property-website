@@ -21,7 +21,7 @@
             position: relative;
         }
 
-        /* BUBBLE BACKGROUND - DARKER & MORE VISIBLE */
+        /* BUBBLE BACKGROUND */
         .bubbles {
             position: fixed;
             top: 0;
@@ -118,7 +118,7 @@
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
-            letter-spacing: 1px;
+            letter-spacing: 3px;
         }
 
         .logo span {
@@ -145,7 +145,7 @@
             cursor: pointer;
         }
 
-        /* Hero Section - More transparent to show darker bubbles */
+        /* Hero Section */
         .hero {
             position: relative;
             z-index: 1;
@@ -262,7 +262,7 @@
             font-weight: 500;
         }
 
-        /* Sections with transparent background to show bubbles */
+        /* Sections */
         .section {
             position: relative;
             z-index: 1;
@@ -524,12 +524,14 @@
             font-size: 14px;
             font-family: 'Poppins', sans-serif;
             background: #f8f9fc;
+            transition: all 0.3s ease;
         }
 
         .form-group input:focus,
         .form-group select:focus {
             outline: none;
             border-color: #ca5310;
+            box-shadow: 0 0 0 2px rgba(202,83,16,0.1);
         }
 
         .form-row {
@@ -672,7 +674,7 @@
         <div><div class="stat-number">100+</div><div class="stat-label">Happy Clients</div></div>
         <div><div class="stat-number">45+</div><div class="stat-label">Properties Sold</div></div>
         <div><div class="stat-number">12+</div><div class="stat-label">Luxury Projects</div></div>
-        <div><div class="stat-number">22 Years</div><div class="stat-label">Trust & Excellence</div></div>
+        <div><div class="stat-number">8 Years</div><div class="stat-label">Trust & Excellence</div></div>
     </div>
 </div>
 
@@ -704,7 +706,7 @@
     </div>
 </div>
 
-<!-- Enquiry Form -->
+<!-- Enquiry Form with Dynamic Budget based on Buy/Rent -->
 <section id="enquiry" class="section">
     <div class="form-section">
         <h2 style="text-align: center; margin-bottom: 5px; font-size: 24px;">Send Enquiry</h2>
@@ -712,31 +714,51 @@
         
         <form id="enquiryForm">
             <div class="form-row">
-                <div class="form-group"><label>Full Name *</label><input type="text" id="name" required placeholder="Enter your full name"></div>
-                <div class="form-group"><label>Mobile Number *</label><input type="tel" id="mobile" required placeholder="10-digit mobile number"></div>
+                <div class="form-group">
+                    <label>Full Name *</label>
+                    <input type="text" id="name" required placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label>Mobile Number *</label>
+                    <input type="tel" id="mobile" required placeholder="10-digit mobile number">
+                </div>
             </div>
             <div class="form-row">
-                <div class="form-group"><label>Email ID</label><input type="email" id="email" placeholder="your@email.com"></div>
-                <div class="form-group"><label>I'm Looking For *</label>
+                <div class="form-group">
+                    <label>Email ID</label>
+                    <input type="email" id="email" placeholder="your@email.com">
+                </div>
+                <div class="form-group">
+                    <label>I'm Looking For *</label>
                     <select id="lookingFor" required>
                         <option value="">Select Property Type</option>
-                        <option>Farm House - Purchase</option>
-                        <option>Farm House - Rent</option>
-                        <option>Bungalow/Kothi - Purchase</option>
-                        <option>Bungalow/Kothi - Rent</option>
-                        <option>Plot - Purchase</option>
+                        <option>Farm House</option>
+                        <option>Bungalow/Kothi</option>
+                        <option>Plot</option>
                         <option>Commercial Property</option>
                     </select>
                 </div>
             </div>
-            <div class="form-group"><label>Budget Range</label>
-                <select id="budget">
-                    <option value="">Select Budget</option>
-                    <option>₹5 Cr - ₹10 Cr</option>
-                    <option>₹10 Cr - ₹15 Cr</option>
-                    <option>Above ₹15 Cr</option>
+            
+            <!-- NEW: Purpose (Buy/Rent) Dropdown -->
+            <div class="form-group">
+                <label>Purpose *</label>
+                <select id="purpose" required onchange="updateBudgetOptions()">
+                    <option value="">Select Purpose</option>
+                    <option value="buy">Buy / Purchase</option>
+                    <option value="rent">Rent</option>
                 </select>
             </div>
+            
+            <!-- Dynamic Budget Dropdown - Changes based on Buy/Rent -->
+            <div class="form-group">
+                <label>Budget Range *</label>
+                <select id="budget" required>
+                    <option value="">Select Budget</option>
+                    <!-- Options will be populated by JavaScript -->
+                </select>
+            </div>
+            
             <button type="submit" class="btn" style="width: 100%;">Send Enquiry →</button>
             <div id="successMessage" style="background: #dcfce7; border-left: 4px solid #22c55e; padding: 12px; border-radius: 12px; margin-top: 16px; text-align: center; font-size: 13px; display: none;">
                 ✓ Enquiry sent! Owner will contact you shortly.
@@ -753,7 +775,7 @@
         <div class="contact-grid">
             <div class="contact-card"><i class="fas fa-map-marker-alt"></i><h3>Address</h3><p>W-6 C No-1, Western Avenue, Tigri Line, Sainik Farm, New Delhi - 110062</p></div>
             <div class="contact-card"><i class="fas fa-phone-alt"></i><h3>Call Us</h3><p>Brij Kishor: <a href="tel:9810000355">9810000355</a></p><p>Alternate: <a href="tel:9810345126">9810345126</a></p></div>
-            <div class="contact-card"><i class="fab fa-whatsapp"></i><h3>WhatsApp</h3><a href="https://wa.me/9810794335">Chat with Rakesh</a><br><a href="https://wa.me/9810000355">Chat with Brij Kishore</a></div>
+            <div class="contact-card"><i class="fab fa-whatsapp"></i><h3>WhatsApp</h3><a href="https://wa.me/9810000355">Chat with Brij Kishor →</a><br><a href="https://wa.me/9810345126">Chat on Alternate →</a></div>
             <div class="contact-card"><i class="far fa-clock"></i><h3>Business Hours</h3><p>Mon-Sat: 10 AM - 7 PM</p></div>
         </div>
     </div>
@@ -813,6 +835,50 @@
         }
     ];
 
+    // Budget Options for BUY (in Crores)
+    const buyBudgetOptions = [
+        "₹5 Cr - ₹10 Cr",
+        "₹10 Cr - ₹15 Cr",
+        "Above ₹15 Cr"
+    ];
+
+    // Budget Options for RENT (in Thousands)
+    const rentBudgetOptions = [
+        "₹10,000 - ₹30,000",
+        "₹30,000 - ₹50,000",
+        "₹50,000 - ₹70,000",
+        "₹70,000 - Above",
+    ];
+
+    // Function to update budget dropdown based on purpose selection
+    function updateBudgetOptions() {
+        const purpose = document.getElementById('purpose').value;
+        const budgetSelect = document.getElementById('budget');
+        
+        if (!budgetSelect) return;
+        
+        // Clear current options
+        budgetSelect.innerHTML = '<option value="">Select Budget</option>';
+        
+        if (purpose === 'buy') {
+            // Add Buy budget options (in Crores)
+            buyBudgetOptions.forEach(option => {
+                const opt = document.createElement('option');
+                opt.value = option;
+                opt.textContent = option;
+                budgetSelect.appendChild(opt);
+            });
+        } else if (purpose === 'rent') {
+            // Add Rent budget options (in Thousands)
+            rentBudgetOptions.forEach(option => {
+                const opt = document.createElement('option');
+                opt.value = option;
+                opt.textContent = option;
+                budgetSelect.appendChild(opt);
+            });
+        }
+    }
+
     function renderProperties() {
         const grid = document.getElementById('propertiesGrid');
         if (!grid) return;
@@ -835,44 +901,33 @@
         grid.innerHTML = html;
     }
 
-    // Create DARKER, MORE VISIBLE BUBBLES
+    // Create bubbles
     function createBubbles() {
         const container = document.getElementById('bubbles');
-        const bubbleCount = 70; // Even more bubbles!
+        const bubbleCount = 70;
         const animations = ['floatBubble', 'floatBubbleSlow', 'floatBubbleFast'];
         
         for (let i = 0; i < bubbleCount; i++) {
             const bubble = document.createElement('div');
             bubble.classList.add('bubble');
             
-            // Random sizes for variety
             const size = Math.random() * 120 + 20;
             bubble.style.width = size + 'px';
             bubble.style.height = size + 'px';
-            
-            // Random positions
             bubble.style.left = Math.random() * 100 + '%';
             bubble.style.top = Math.random() * 100 + '%';
             
-            // Random animation duration
             const duration = Math.random() * 18 + 6;
-            
-            // Random animation type
             const randomAnim = animations[Math.floor(Math.random() * animations.length)];
             bubble.style.animation = `${randomAnim} ${duration}s ease-in-out infinite`;
             bubble.style.animationDelay = (Math.random() * 6) + 's';
-            
-            // Higher opacity for better visibility
             bubble.style.opacity = Math.random() * 0.6 + 0.3;
-            
-            // Stronger glow effect
             bubble.style.boxShadow = `0 0 ${Math.random() * 20 + 10}px rgba(202, 83, 16, 0.4)`;
             
             container.appendChild(bubble);
         }
     }
 
-    // Scroll to section with offset
     function scrollToSection(sectionId) {
         const element = document.getElementById(sectionId);
         if (element) {
@@ -887,10 +942,10 @@
 
     function scrollToEnquiry(propertyName) {
         const select = document.getElementById('lookingFor');
-        if (propertyName.includes('Farm')) select.value = 'Farm House - Purchase';
-        else if (propertyName.includes('Bungalow')) select.value = 'Bungalow/Kothi - Purchase';
-        else if (propertyName.includes('Plot')) select.value = 'Plot - Purchase';
-        else select.value = 'Farm House - Purchase';
+        if (propertyName.includes('Farm')) select.value = 'Farm House';
+        else if (propertyName.includes('Bungalow')) select.value = 'Bungalow/Kothi';
+        else if (propertyName.includes('Plot')) select.value = 'Plot';
+        else select.value = 'Farm House';
         
         const element = document.getElementById('enquiry');
         if (element) {
@@ -912,6 +967,14 @@
         }, 3000);
     }
 
+    // Initialize budget options with default (empty selection)
+    document.addEventListener('DOMContentLoaded', function() {
+        const budgetSelect = document.getElementById('budget');
+        if (budgetSelect) {
+            budgetSelect.innerHTML = '<option value="">First select Purpose (Buy/Rent)</option>';
+        }
+    });
+
     const form = document.getElementById('enquiryForm');
     const successMsg = document.getElementById('successMessage');
 
@@ -921,23 +984,37 @@
         const name = document.getElementById('name').value;
         const mobile = document.getElementById('mobile').value;
         const lookingFor = document.getElementById('lookingFor').value;
+        const purpose = document.getElementById('purpose').value;
+        const budget = document.getElementById('budget').value;
         
-        if (!name || !mobile || !lookingFor) {
+        if (!name || !mobile || !lookingFor || !purpose || !budget) {
             alert('Please fill all required fields (*)');
             return;
         }
         
         const email = document.getElementById('email').value;
-        const budget = document.getElementById('budget').value;
         
         const emailSubject = 'Property Enquiry from ' + name;
-        const emailBody = 'NEW PROPERTY ENQUIRY\n\nName: ' + name + '\nMobile: ' + mobile + '\nEmail: ' + (email || 'Not provided') + '\nLooking For: ' + lookingFor + '\nBudget: ' + (budget || 'Not specified') + '\n\nPlease contact the customer at the earliest on ' + mobile + '.';
+        const emailBody = 'NEW PROPERTY ENQUIRY\n\n' +
+                         'Name: ' + name + '\n' +
+                         'Mobile: ' + mobile + '\n' +
+                         'Email: ' + (email || 'Not provided') + '\n' +
+                         'Property Type: ' + lookingFor + '\n' +
+                         'Purpose: ' + (purpose === 'buy' ? 'Buy/Purchase' : 'Rent/Lease') + '\n' +
+                         'Budget: ' + budget + '\n\n' +
+                         'Please contact the customer at the earliest on ' + mobile + '.';
         
         window.location.href = 'mailto:9810000355@msg.irctc.com,9810345126@msg.irctc.com?subject=' + encodeURIComponent(emailSubject) + '&body=' + encodeURIComponent(emailBody);
         
         successMsg.style.display = 'block';
         showToast('Enquiry sent! Owner will contact you soon.');
         form.reset();
+        
+        // Reset budget dropdown after reset
+        const budgetSelect = document.getElementById('budget');
+        if (budgetSelect) {
+            budgetSelect.innerHTML = '<option value="">First select Purpose (Buy/Rent)</option>';
+        }
         
         setTimeout(function() {
             successMsg.style.display = 'none';
